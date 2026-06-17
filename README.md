@@ -8,11 +8,13 @@
 
 ![背手球评负鼠 Codex 状态对应图](examples/images/current-state-map.png)
 
+<video src="examples/videos/status-demo.mov" controls width="100%"></video>
+
 ## 这个仓库是什么
 
-这是一个面向 REDSkill / Codex Skill 的世界杯宠物模板。它不是通用生图 prompt，也不是单张表情包生成器，而是一个可以指导 Codex 生成、配置、安装和迭代“背手球评负鼠”的动态宠物 Skill。
+这是一个面向 Codex 的世界杯宠物 Skill。它不是通用生图 prompt，也不是单张表情包生成器，而是一个可以指导 Codex 生成、配置、安装和迭代“背手球评负鼠”的动态宠物 Skill。
 
-重点：它的真正产出是 **Codex 动态宠物 spritesheet**。状态对应图只是展示物料，不是最终产品本体。
+重点：它的真正产出是 **Codex 动态宠物 spritesheet**。状态对应图和演示视频只是展示物料，不是最终产品本体。
 
 核心设定是：负鼠本体固定，用户只改外层配置。
 
@@ -32,27 +34,32 @@
 - 侧脸、背手、冷静疲惫气质
 - 9 个 Codex 状态契约和动态多帧循环
 
-## 和 Ian Xiaohei Illustrations 的关系
+## 适合谁用
 
-形态上类似：都是“固定 IP + Skill 规则 + 示例/参考 + 可复用产出”的仓库。
+这个 Skill 适合想在 Codex 里做宠物、状态反馈和轻量互动展示的人。
 
-区别是：
+适合这些场景：
 
-- Ian Xiaohei Illustrations 产出正文配图和 shot list。
-- World Cup Opossum Pet Skill 产出 Codex 动态宠物包、状态配置和赛程牌 spritesheet。
-- Ian 的自由度在“为文章重新发明隐喻”。
-- 负鼠 Skill 的自由度在“换球队风格、状态文案和赛程牌样式”，负鼠主体要锁住。
+- 想给 Codex 做一个有记忆点的桌面宠物
+- 想把 Codex 的工作状态变成可爱的动态反馈
+- 想围绕世界杯做一个可复用、可改配置的宠物模板
+- 想学习 Codex pet / Skill / spritesheet 的组织方式
+- 想在不改负鼠主体的情况下，替换球队风格、文案和赛程牌
 
-## 默认产出
+## 可以产出什么
+
+默认会产出一套 Codex 宠物包，以及配套展示物料。
+
+主要产出：
 
 - 一个可安装的 Codex pet 文件夹
 - `pet.json`
 - `spritesheet-daily-board.png`，8 列 x 9 行动态图集
 - `pet.config.json`
-- 当前状态对应图，用于展示和返稿说明
+- 当前状态对应图，用于展示和说明
+- 状态演示视频
 - 黄色 waiting/waving 完整耳朵参考图
 - review 默认使用裁判风，避免和阿根廷 idle/running 混淆
-- 可选：小红书发布素材图
 
 动态规则：
 
@@ -62,7 +69,7 @@
 - `running-right` 和 `running-left` 必须是方向明确的动态移动状态。
 - `idle / waiting / running / review / failed / waving / jumping` 都不能只做成静态截图。
 
-## 安装形态
+## 怎么用
 
 真正需要复制到 Codex skills 目录的是子目录：
 
@@ -70,7 +77,7 @@
 worldcup-opossum-pet/
 ```
 
-示例：
+安装示例：
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
@@ -83,28 +90,43 @@ cp -R ./worldcup-opossum-pet "${CODEX_HOME:-$HOME/.codex}/skills/"
 Use $worldcup-opossum-pet 安装世界杯负鼠宠物。
 ```
 
-注意：这个 Skill 依赖本地已安装的 `$hatch-pet`。它负责世界杯负鼠的配置、文案和主题规则；真正的动态宠物图集生成、校验和安装由 `$hatch-pet` 接管。
-
-安全边界：下载 Skill 本身不会自动接管 Codex 宠物；只有用户在 Codex 里明确运行安装请求时，才会通过 `$hatch-pet` 写入 `${CODEX_HOME:-$HOME/.codex}/pets/<pet-id>/`。配置文件只当数据读取，不执行其中的内容。
-
-换句话说：
-
-- 安装 Skill：只是让 Codex 认识 `$worldcup-opossum-pet`。
-- 运行安装请求：才会通过 `$hatch-pet` 生成/安装宠物包。
-- 显示宠物：依赖 Codex 宠物系统读取 `${CODEX_HOME:-$HOME/.codex}/pets/<pet-id>/pet.json` 和 spritesheet；如果 Codex 有缓存，可能需要刷新、重启或切换宠物。
-- 赛程牌：是构建时写进 spritesheet 的画面，不是自动联网刷新的实时组件；要保证每天准确，需要单独刷新 fixture 数据并重建/重装宠物。
-
-或：
+也可以要求它按你的偏好改配置：
 
 ```text
-Use $worldcup-opossum-pet 把我的主队改成巴西风，保留赛程牌，文案更阴阳怪气一点。
+Use $worldcup-opossum-pet 把我的主队改成巴西风，保留赛程牌，文案更冷幽默一点。
 ```
 
-## 推荐小红书标题
+只生成配置、不安装：
 
-- 我用 REDSkill 做了一只世界杯负鼠看球搭子
-- 对世界杯动手了：一键安装会报赛程的 Codex 负鼠
-- 熬夜看球还要上班？我做了只背手球评负鼠
+```text
+Use $worldcup-opossum-pet 先不要安装。根据我的偏好生成一份 pet.config.json。
+```
+
+## 工作流程
+
+这个 Skill 自己负责世界杯负鼠的规则、配置、文案和主题约束；真正的宠物生成、校验和安装由本地 `$hatch-pet` 接管。
+
+标准流程：
+
+1. 读取或生成 `pet.config.json`。
+2. 锁定负鼠主体：侧脸、背手、疲惫球评气质不变。
+3. 根据 Codex 的 9 个状态映射球衣、动作和状态文案。
+4. 如果开启赛程牌，把中国时间赛程写进宠物画面。
+5. 调用 `$hatch-pet` 生成 Codex 兼容的 spritesheet。
+6. 运行 `$hatch-pet` 的 atlas 校验和状态图检查。
+7. 安装到 `${CODEX_HOME:-$HOME/.codex}/pets/<pet-id>/`。
+8. 在 Codex 宠物系统里刷新或切换到该宠物。
+
+## 注意事项
+
+- 下载这个 Skill 不会自动接管 Codex 宠物。
+- 只有用户明确运行安装请求时，才会写入 Codex pets 目录。
+- 这个 Skill 依赖本地已安装的 `$hatch-pet`。
+- 配置文件只当数据读取，不执行其中的内容。
+- 赛程牌是构建时写进 spritesheet 的画面，不是自动联网刷新的实时组件。
+- 要保证每天赛程准确，需要刷新 fixture 数据并重新构建/安装宠物。
+- 如果 Codex 有宠物缓存，安装后可能需要刷新、重启或切换宠物。
+- 球队风格使用配色和氛围参考，不应直接复制官方队徽、官方球衣或商标素材。
 
 ## 目录结构
 
@@ -115,6 +137,9 @@ worldcup-opossum-pet-skill/
     prompts.md
     images/
       current-state-map.png
+      yellow-complete-state.png
+    videos/
+      status-demo.mov
   worldcup-opossum-pet/
     SKILL.md
     agents/
@@ -130,4 +155,4 @@ worldcup-opossum-pet-skill/
       output-contract.md
 ```
 
-真正安装的是 `worldcup-opossum-pet/` 子目录；根目录和 `examples/` 是给 GitHub / 小红书展示用的。展示图可以静态，宠物本体必须是动态图集。
+真正安装的是 `worldcup-opossum-pet/` 子目录；根目录和 `examples/` 是展示与说明材料。展示图可以静态，宠物本体必须是动态图集。
