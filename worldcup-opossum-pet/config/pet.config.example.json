@@ -1,0 +1,64 @@
+{
+  "petId": "oposscoach",
+  "petName": "背手球评负鼠",
+  "showSchedule": true,
+  "size": "normal",
+  "sharpness": "crisp",
+  "animationIntensity": "subtle",
+  "scheduleBoardStyle": "footboard",
+  "timezone": "Asia/Shanghai",
+  "stateCopy": {
+    "idle": "比赛没开，魂已经在加时赛了。",
+    "waiting": "你快说，下一场我还得熬。",
+    "running": "表面在上班，实际在算净胜球。",
+    "review": "这球我昨晚就觉得不对。",
+    "failed": "凌晨三点看完点球，上午十点被需求点球。",
+    "waving": "早啊，昨晚你也没睡吧？",
+    "jumping": "进了，但我明天还要上班。",
+    "running-right": "冲去看回放，别问我报表。",
+    "running-left": "撤了撤了，老板来了。"
+  },
+  "stateJerseys": {
+    "idle": "argentina",
+    "waiting": "brazil",
+    "running": "argentina",
+    "review": "referee",
+    "failed": "peru",
+    "waving": "brazil",
+    "jumping": "portugal",
+    "running-right": "france",
+    "running-left": "france"
+  },
+  "teamStyles": {
+    "argentina": {
+      "label": "阿根廷风",
+      "colors": ["#75aadb", "#ffffff", "#f6b40e"],
+      "notes": "浅蓝白条球衣，适合冷静背手、复盘、工作中。"
+    },
+    "brazil": {
+      "label": "巴西风",
+      "colors": ["#ffdf00", "#009c3b", "#002776"],
+      "notes": "黄衣绿边，适合等待、打招呼。"
+    },
+    "france": {
+      "label": "法国风",
+      "colors": ["#002654", "#ffffff", "#ed2939"],
+      "notes": "深蓝球衣，适合跑动和战术板。"
+    },
+    "portugal": {
+      "label": "葡萄牙风",
+      "colors": ["#006600", "#ff0000", "#ffcc00"],
+      "notes": "红绿球衣，适合跳起、踢球。"
+    },
+    "peru": {
+      "label": "秘鲁风",
+      "colors": ["#ffffff", "#d91023", "#111111"],
+      "notes": "白底红斜杠，适合失败/被球击中感。"
+    },
+    "referee": {
+      "label": "裁判风",
+      "colors": ["#111111", "#ffffff", "#21c883"],
+      "notes": "黑白裁判条纹和战术板，适合 review/审查中。"
+    }
+  }
+}
