@@ -1,6 +1,6 @@
 ---
 name: worldcup-opossum-pet
-description: Create, configure, install, and iterate a dynamic World Cup themed Codex pet based on a fixed side-profile opossum mascot, using the installed $hatch-pet workflow for Codex-compatible atlas generation, validation, QA, and packaging. Use when the user asks for a REDSkill/Codex Skill that installs an animated pet, customizes opossum pet names, Codex state copy, team-inspired jerseys, state-to-jersey mappings, China-time match schedule boards, pet size/sharpness, dynamic spritesheets, or current-state preview images for the opossum pet.
+description: Create, configure, install, and iterate a dynamic World Cup themed Codex pet based on a fixed side-profile opossum mascot, using the installed $hatch-pet workflow for Codex-compatible atlas generation, validation, QA, and packaging. Use when the user asks for a Codex Skill that installs an animated pet, customizes opossum pet names, Codex state copy, team-inspired jerseys, state-to-jersey mappings, China-time match schedule boards, pet size/sharpness, dynamic spritesheets, or current-state preview images for the opossum pet.
 ---
 
 # World Cup Opossum Pet
@@ -35,7 +35,7 @@ Choose the smallest useful mode:
 2. **Configure mode**: update or generate `pet.config.json`.
 3. **Build mode**: generate a pet package with `pet.json`, spritesheet, config, and validation result.
 4. **Install mode**: copy the built pet package into `${CODEX_HOME:-$HOME/.codex}/pets/<pet-id>`.
-5. **Share mode**: generate a current-state map or REDSkill/Xiaohongshu explanation image.
+5. **Share mode**: generate a current-state map or Codex pet explanation image.
 
 Installing this skill is not the same as installing the pet. A downloaded skill becomes available to Codex, but the pet appears only after the user explicitly runs Install mode and the final `pet.json` plus spritesheet are written to `${CODEX_HOME:-$HOME/.codex}/pets/<pet-id>/`.
 
@@ -161,7 +161,7 @@ If schedule display is enabled, render the schedule inside the pet spritesheet a
 
 The schedule board is embedded at build time. It does not update live unless a separate refresh automation or host integration rebuilds/reinstalls the pet with current fixture data.
 
-For Share mode state maps, compose each state from the full source frame or full approved cutout with generous padding. Do not crop, zoom, or anchor a pet so tightly that the head, rear ear, snout, tail, ball, or prop falls outside the image. Keep the pet below the title baseline; if a state is tall or right-anchored, scale it down instead of letting the head overlap the heading.
+For Share mode state maps, compose each state from the full source frame or full approved cutout with generous padding. Do not crop, zoom, or anchor a pet so tightly that the head, rear ear, snout, tail, ball, or prop falls outside the image. Keep the pet below the title baseline; if a state is tall or right-anchored, scale it down instead of letting the head overlap the heading. The bottom-right `review` / referee-style card is a known risk case: its right-facing head and rear ear must both be fully visible inside the card, with clear space above the ears and to the right of the snout.
 
 ### 4.1 Hatch-Pet Compatibility
 
@@ -192,6 +192,7 @@ Check before delivery:
 
 - full head and both ears visible in every state
 - yellow-kit `waiting` / `waving` states match the complete-ear reference asset
+- `review` / referee-style visuals must preserve the complete head, rear ear, snout, and tactics-board prop; do not accept right-edge or top-edge clipping in either the pet atlas or the current-state map
 - no body parts cropped
 - Share mode maps keep the complete head and both ears clear of title text and card edges
 - schedule board does not cover the face

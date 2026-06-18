@@ -82,6 +82,7 @@ Unused cells must remain transparent.
 - Every active row has visible frame-to-frame motion.
 - Full opossum head and both ears are visible.
 - Yellow-kit `waiting` and `waving` outputs use the complete-ear reference asset, not older cropped-ear cutouts.
+- `review` / referee-style outputs must show the full head, rear ear, snout, and tactics-board prop; reject atlas frames or current-state-map cards where the right-facing head is cropped by the top or right edge.
 - Share/current-state maps must fit each pet from the full approved frame, with enough top padding that ears do not touch or overlap titles/card edges.
 - No schedule board covers the face.
 - Jersey mapping matches config.

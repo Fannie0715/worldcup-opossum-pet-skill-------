@@ -39,10 +39,10 @@ Use $worldcup-opossum-pet 先不要安装。
 - 清晰度 extra-crisp
 ```
 
-## 做小红书展示图
+## 做 Codex 宠物展示图
 
 ```text
 Use $worldcup-opossum-pet 为当前宠物生成一张状态对应图。
 需要展示 9 个 Codex 状态、对应球队风格、状态文案和赛程牌。
-用途：小红书 REDSkill 活动笔记。
+用途：GitHub README 或 Codex 宠物说明页。
 ```
