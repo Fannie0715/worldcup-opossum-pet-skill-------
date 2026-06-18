@@ -4,14 +4,6 @@
 >
 > 固定负鼠本体 | 动态多帧宠物 | 可改球衣/赛程牌/配置文案 | 9 个 Codex 状态 | 中国时间赛程
 
-## 重要说明
-
-**赛事日历不会在 Codex 里实时自动刷新。赛程牌是构建宠物时画进 `spritesheet.webp` 的静态画面。**
-
-**如果要显示最新赛程，需要重新运行刷新/安装流程；如果 Codex 已经打开，还可能需要切换宠物、收起再唤醒宠物，或重启 Codex，才能让本地宠物缓存显示新图。**
-
-另外，`stateCopy` / 状态文案目前只是配置和展示图说明。Codex 原生宠物运行时只渲染 spritesheet 动画，不会自动把状态文案显示成气泡。
-
 ## 状态预览
 
 ![背手球评负鼠 Codex 状态对应图](examples/images/current-state-map.png)
@@ -131,7 +123,7 @@ Use $worldcup-opossum-pet 先不要安装。根据我的偏好生成一份 pet.c
 - 只有用户明确运行安装请求时，才会写入 Codex pets 目录。
 - 这个 Skill 依赖本地已安装的 `$hatch-pet`。
 - 配置文件只当数据读取，不执行其中的内容。
-- Codex 原生宠物目前只显示 spritesheet 动画，不会自动显示 `stateCopy` 状态文案气泡。
+- **Codex 原生宠物目前只显示 spritesheet 动画，不会自动显示 `stateCopy` 状态文案气泡。**
 - **赛程牌是构建时写进 spritesheet 的画面，不是宠物内部实时联网组件。**
 - **如果配置了每日刷新任务，任务只会定时核对 fixture 数据、重建赛程牌，并覆盖安装新的 `spritesheet.webp`。**
 - **每日刷新只保证宠物文件更新；Codex 客户端是否立刻显示新图，取决于本地宠物缓存。**
