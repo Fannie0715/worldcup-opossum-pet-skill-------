@@ -8,7 +8,7 @@
 
 ![背手球评负鼠 Codex 状态对应图](examples/images/current-state-map.png)
 
-<video src="examples/videos/status-demo.mov" controls width="100%"></video>
+![背手球评负鼠状态演示](examples/videos/status-demo.gif)
 
 ## 这个仓库是什么
 

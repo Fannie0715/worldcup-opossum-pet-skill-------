@@ -6,3 +6,4 @@ dist/
 build/
 *.log
 examples/images/current-state-map-v2.png
+examples/videos/status-demo-palette.png
