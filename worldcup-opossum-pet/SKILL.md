@@ -159,7 +159,7 @@ The atlas must preserve frame counts and row order. A current-state map may show
 
 If schedule display is enabled, render the schedule inside the pet spritesheet as a small attached board. Do not rely on native pet click hooks unless the host app explicitly supports them.
 
-The schedule board is embedded at build time. It does not update live unless a separate refresh automation or host integration rebuilds/reinstalls the pet with current fixture data.
+The schedule board is embedded at build time. It does not update live unless a separate refresh automation or host integration rebuilds/reinstalls the pet with current fixture data. If a user reports that the board is stuck on an old date, check these in order: refresh automation status is `ACTIVE`, fixture data contains the target `Asia/Shanghai` date, the refresh workflow has copied a new `spritesheet.webp` and `pet.json` into the installed Codex pets directory, and the Codex app has refreshed or restarted so its local pet cache can reload the updated image.
 
 For Share mode state maps, compose each state from the full source frame or full approved cutout with generous padding. Do not crop, zoom, or anchor a pet so tightly that the head, rear ear, snout, tail, ball, or prop falls outside the image. Keep the pet below the title baseline; if a state is tall or right-anchored, scale it down instead of letting the head overlap the heading. The bottom-right `review` / referee-style card is a known risk case: its right-facing head and rear ear must both be fully visible inside the card, with clear space above the ears and to the right of the snout.
 
@@ -185,6 +185,11 @@ Schedule data must be in `Asia/Shanghai`.
 For World Cup games that happen in North America, local afternoon/evening matches often become China-time midnight or morning matches. Select by China date, not source local date.
 
 If the user asks for accuracy or current fixtures, verify against current sources before rebuilding fixture data.
+
+If the user expects daily updates, explicitly explain that the update path has two separate parts:
+
+- data/build freshness: fixture data plus the embedded spritesheet must be regenerated for the intended China-time date
+- client freshness: Codex may continue showing a cached pet image until the user switches pets, wakes the pet again, or restarts Codex
 
 ### 6. Visual QA
 

@@ -37,6 +37,13 @@ The China-time schedule board is embedded into the generated spritesheet. It is 
 
 For accurate daily schedules, rebuild or refresh the pet package with current fixture data before installing. Do not claim the board updates itself unless a separate automation or host integration is actually installed.
 
+If a board remains stuck on an old date, troubleshoot in this order:
+
+1. The refresh automation or external scheduler is still active, not paused.
+2. The fixture data includes the intended `Asia/Shanghai` date.
+3. The refresh workflow copied the rebuilt `spritesheet.webp`, `spritesheet-daily-board.*`, `daily-board-meta.json`, and `pet.json` into the installed pet directory.
+4. The Codex app has reloaded its local pet cache by switching pets, waking the pet again, or restarting.
+
 ## Delegation Rule
 
 Use this skill for:
